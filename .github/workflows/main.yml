@@ -1,5 +1,5 @@
 name: build
-on: push
+on: pull_request
 
 jobs:
   test:
@@ -48,6 +48,8 @@ jobs:
       - name: Report test suite coverage
         run: |
           pipenv run pytest --cov=app
+      - name: Pytest Coverage Commentator
+        uses: coroo/pytest-coverage-commentator@v1.0.2            
   format:
     runs-on: ubuntu-latest
     steps:
